@@ -7,7 +7,13 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
     python3-setuptools \
     python3-wheel \
     python3-dev \
+    gcc-8 \
+    g++-8 \
     && apt-get clean -y
+
+RUN ln -sf /usr/bin/x86_64-linux-gnu-gcc-8 /usr/bin/x86_64-linux-gnu-gcc
+RUN ln -sf /usr/bin/x86_64-linux-gnu-g++-8 /usr/bin/x86_64-linux-gnu-g++
+RUN ln -sf /usr/lib/gcc/x86_64-linux-gnu/8/cc1plus /usr/bin/cc1plus
 
 RUN adduser --system --disabled-password spacy
 
